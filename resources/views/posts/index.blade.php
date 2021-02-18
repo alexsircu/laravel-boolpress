@@ -16,6 +16,7 @@
               <th>Sottotitolo</th>
               <th>Autore</th>
               <th>Data pubblicazione</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -35,7 +36,7 @@
 @endsection
 
 @section('footer')
-    <div class="container">
-      <a href="#" class="btn btn-primary">Aggiungi post</a>
+    <div class="container text-right">
+      <a href="{{ route('posts.create') }}" class="btn btn-primary">Aggiungi post</a>
     </div>
 @endsection

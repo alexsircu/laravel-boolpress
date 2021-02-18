@@ -21,7 +21,7 @@
 @endsection
 
 @section('footer')
-    <div class="container">
+    <div class="container text-right">
       <a href="{{ route('posts.index') }}" class="btn btn-primary">Indietro</a>      
     </div>
 @endsection
