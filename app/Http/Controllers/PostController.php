@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Post;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -46,9 +46,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        // dd($post);
+        return view('posts.show', compact('post'));
     }
 
     /**
