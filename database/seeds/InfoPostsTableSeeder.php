@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\InfoPost;
-use Faker\Generator as Faker;
 use App\Post;
+use Faker\Generator as Faker;
 
 class InfoPostsTableSeeder extends Seeder
 {

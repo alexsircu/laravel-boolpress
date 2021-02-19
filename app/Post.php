@@ -10,4 +10,8 @@ class Post extends Model
     public function infoPost() {
         return $this->hasOne('App\InfoPost');
     }
+
+    public function comments() { //scrivo comments con la s perchè ad un post corrispondono più commenti
+        return $this->hasMany('App\Comment');
+    }
 }

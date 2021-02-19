@@ -16,7 +16,10 @@
               </tr>
           @endforeach
         </table>
-        <p>Stato del mio post: <strong>{{ strtoupper($post->infoPost->post_status) }}</strong></p>       
+        <p>Stato del mio post: <strong>{{ strtoupper($post->infoPost->post_status) }}</strong></p>  
+        @foreach ($post->comments as $comment)
+            <p>Commenti del mio post: {{ $comment->comment_text }}</p> 
+        @endforeach
       </div>
 @endsection
 
