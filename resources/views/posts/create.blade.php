@@ -7,8 +7,8 @@
 @endsection
 
 @section('content')
-    <div class="container">
-      <form action="{{ route('posts.store') }}" method="post">
+    <div class="container mb-5">
+      <form action="{{ route('posts.store') }}" method="post" class="clearfix">
         @method('POST')
         @csrf
 
@@ -40,7 +40,7 @@
         
         <div class="form-group">
           <label for="post_status">Stato del post</label>
-          <select name="post_status" id="post_status">
+          <select name="post_status" class="form-control" id="post_status">
             <option value="draft">draft</option>  
             <option value="public">public</option>  
             <option value="private">private</option>  
@@ -49,7 +49,7 @@
         
         <div class="form-group">
           <label for="post_status">Stato del commento</label>
-          <select name="comment_status" id="comment_status">
+          <select name="comment_status" class="form-control" id="comment_status">
             <option value="open">open</option>  
             <option value="closed">closed</option>  
             <option value="private">private</option>  
