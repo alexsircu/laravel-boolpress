@@ -42,12 +42,14 @@ class PostController extends Controller
         // dd($infoPost->all());
         $data = $request->all();
 
+        //creo nuova istanza del post e la salvo
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->save();
 
         $data['post_id'] = $newPost->id;
  
+        //creo nuova istanza di infopost e la salvo
         $newInfoPost = new InfoPost();
         $newInfoPost->fill($data);
         $newInfoPost->save();
