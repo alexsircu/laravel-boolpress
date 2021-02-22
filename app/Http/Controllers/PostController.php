@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\InfoPost;
 
 class PostController extends Controller
 {
@@ -37,7 +38,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        // dd($infoPost->all());
+        $data = $request->all();
+
+        $newPost = new Post();
+        $newPost->fill($data);
+        $newPost->save();
+
+        $data['post_id'] = $newPost->id;
+ 
+        $newInfoPost = new InfoPost();
+        $newInfoPost->fill($data);
+        $newInfoPost->save();
+
+        return redirect()->route('posts.index')->with('message', 'Nuovo post aggiunto');
     }
 
     /**
