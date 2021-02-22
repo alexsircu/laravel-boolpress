@@ -107,7 +107,7 @@ class PostController extends Controller
         if(empty($data['tags'])) {
             $post->tags()->detach();
         } else {
-            $post->tags()->sync($data['tgas']);
+            $post->tags()->sync($data['tags']);
         }
 
         return redirect()->route('posts.index')->with('message', 'Post aggiornato correttamente');
