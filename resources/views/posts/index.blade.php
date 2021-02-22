@@ -22,6 +22,7 @@
               <th>Autore</th>
               <th>Data pubblicazione</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -33,6 +34,7 @@
                   <td>{{ $item->author }}</td>
                   <td>{{ $item->publication_date }}</td>
                   <td><a href="{{ route('posts.show', $item->id) }}"><i class="fas fa-info-circle"></i></a></td>
+                  <td><a href="{{ route('posts.edit', $item->id) }}"><i class="fas fa-pencil-alt"></i></a></td>
                 </tr>
             @endforeach
           </tbody>
@@ -41,7 +43,7 @@
 @endsection
 
 @section('footer')
-    <div class="container text-right">
+    <div class="container text-right mb-5">
       <a href="{{ route('posts.create') }}" class="btn btn-primary">Aggiungi post</a>
     </div>
 @endsection

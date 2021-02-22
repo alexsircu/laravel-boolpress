@@ -61,6 +61,15 @@
           <input type="date" class="form-control" id="publication_date" name="publication_date" placeholder="Inserisci la data di pubblicazione">  
         </div>
 
+        @foreach ($tags as $tag)
+          <div class="form-group">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="tag-{{ $tag->id }}" value="{{ $tag->id }}" name="tags[]">
+              <label class="custom-control-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+            </div>
+          </div>
+        @endforeach
+
         <div class="float-left"><a href="{{ route('posts.index') }}" class="btn btn-primary">Indietro</a></div>
         <div class="float-right"><button type="submit" class="btn btn-primary">Aggiungi</button></div>
         

@@ -23,7 +23,7 @@ class Post extends Model
         return $this->hasMany('App\Comment');
     }
 
-    public function tgas()
+    public function tags()
     { //scrivo tags con la s perchè ad un post corrispondono più tag
         return $this->belongsToMany('App\Tag');
     }

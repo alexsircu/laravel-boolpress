@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\InfoPost;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -27,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+        return view('posts.create', compact('tags'));
     }
 
     /**
@@ -48,11 +50,15 @@ class PostController extends Controller
         $newPost->save();
 
         $data['post_id'] = $newPost->id;
- 
+
         //creo nuova istanza di infopost e la salvo
         $newInfoPost = new InfoPost();
         $newInfoPost->fill($data);
         $newInfoPost->save();
+
+        if(!empty($data['tags'])) {
+            $newPost->tags()->attach($data['tags']);
+        }
 
         return redirect()->route('posts.index')->with('message', 'Nuovo post aggiunto');
     }
@@ -75,9 +81,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $tags = Tag::all();
+        return view('posts.edit', compact('post', 'tags'));
     }
 
     /**
@@ -87,9 +94,23 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        // dd($request->all());
+        $data = $request->all();
+        $post->update($data);
+
+        $infoPost = $post->infoPost;
+        $infoPost->update($data);
+
+        //voglio eliminare le relazione con la tabella per modificare i tag
+        if(empty($data['tags'])) {
+            $post->tags()->detach();
+        } else {
+            $post->tags()->sync($data['tgas']);
+        }
+
+        return redirect()->route('posts.index')->with('message', 'Post aggiornato correttamente');
     }
 
     /**
