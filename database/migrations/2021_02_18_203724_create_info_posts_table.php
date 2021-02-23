@@ -24,7 +24,8 @@ class CreateInfoPostsTable extends Migration
             // qui creo la relazione con la tabella posts
             $table->foreign('post_id')
                 ->references('id')
-                ->on('posts'); 
+                ->on('posts')
+                ->onDelete('cascade'); 
         });
     }
 

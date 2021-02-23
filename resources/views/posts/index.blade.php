@@ -20,7 +20,9 @@
               <th>Titolo</th>
               <th>Sottotitolo</th>
               <th>Autore</th>
+              <th>Immagine</th>
               <th>Data pubblicazione</th>
+              <th></th>
               <th></th>
               <th></th>
             </tr>
@@ -32,9 +34,17 @@
                   <td>{{ $item->title }}</td>
                   <td>{{ $item->subtitle }}</td>
                   <td>{{ $item->author }}</td>
+                  <td><img src="{{ $item->img_path }}" alt="{{ $item->title }}"></td>
                   <td>{{ $item->publication_date }}</td>
-                  <td><a href="{{ route('posts.show', $item->id) }}"><i class="fas fa-info-circle"></i></a></td>
-                  <td><a href="{{ route('posts.edit', $item->id) }}"><i class="fas fa-pencil-alt"></i></a></td>
+                  <td><a href="{{ route('posts.show', $item->id) }}" class="btn"><i class="fas fa-info-circle"></i></a></td>
+                  <td><a href="{{ route('posts.edit', $item->id) }}" class="btn"><i class="fas fa-pencil-alt"></i></a></td>
+                  <td>
+                    <form action="{{ route('posts.destroy', $item->id) }}" method="post">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn"><i class="far fa-trash-alt"></i></button>
+                    </form>
+                  </td>
                 </tr>
             @endforeach
           </tbody>
