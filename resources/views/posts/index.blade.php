@@ -18,6 +18,7 @@
             <tr>
               <th>ID</th>
               <th>Titolo</th>
+              <th>Slug</th>
               <th>Sottotitolo</th>
               <th>Autore</th>
               <th>Immagine</th>
@@ -32,6 +33,7 @@
                 <tr>
                   <td>{{ $item->id }}</td>
                   <td>{{ $item->title }}</td>
+                  <td>{{ $item->slug }}</td>
                   <td>{{ $item->subtitle }}</td>
                   <td>{{ $item->author }}</td>
                   <td><img src="{{ $item->img_path }}" alt="{{ $item->title }}"></td>

@@ -16,10 +16,17 @@
               </tr>
           @endforeach
         </table>
-        <p>Stato del mio post: <strong>{{ strtoupper($post->infoPost->post_status) }}</strong></p>  
-        @foreach ($post->comments as $comment)
-            <p>Commenti del mio post: {{ $comment->comment_text }}</p> 
-        @endforeach
+        <p>Stato del post: <strong>{{ strtoupper($post->infoPost->post_status) }}</strong></p>  
+
+        <p>Stato dei commenti: <strong>{{ strtoupper($post->infoPost->comment_status) }}</strong></p>  
+
+        @if ($post->infoPost->comment_status !== 'closed')
+            @foreach ($post->comments as $comment)
+              <p>Commenti del mio post: {{ $comment->comment_text }}</p> 
+            @endforeach
+        @endif
+
+       
       </div>
 @endsection
 

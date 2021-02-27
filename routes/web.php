@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', 'PostController@index')->name('posts.index');
 Route::resource('posts', 'PostController');
+
+Route::get('blog/{slug}', 'BlogController@show');  //1) metto show solo per uniformità 2) il primo parametro della funzione get è l'url al quale la mia pagine verrà visualizzata 
